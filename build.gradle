@@ -1,0 +1,47 @@
+group 'SpringBootMVC'
+version '0.1.0'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.1.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'application'
+
+
+mainClassName = "hello.Application"
+
+jar {
+    baseName = 'SpringBootMVC'
+    version =  '0.1.0'
+
+    manifest {
+        attributes 'Main-Class': 'hello.Application'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+    testCompile("junit:junit")
+}
+
+
+task getHomeDir << {
+    println gradle.gradleHomeDir
+}
